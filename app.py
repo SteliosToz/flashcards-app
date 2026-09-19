@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///flashcards.db"
@@ -14,6 +14,7 @@ class Card(db.Model):
     answer = db.Column(db.String(300), nullable=False)
     category = db.Column(db.String(50), nullable=False)
     interval = db.Column(db.Integer, default=1)
+    ease_factor = db.Column(db.Float, default=2.5)
     next_review = db.Column(db.DateTime, default=datetime.utcnow)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -48,6 +49,51 @@ def get_cards():
             "category": card.category
         })
     return jsonify(result)
+
+
+@app.route("/cards/<int:card_id>", methods=["PUT"])
+def update_card(card_id):
+    card = Card.query.get_or_404(card_id)
+    data = request.json
+    card.question = data.get("question", card.question)
+    card.answer = data.get("answer", card.answer)
+    card.category = data.get("category", card.category)
+    db.session.commit()
+    return jsonify({"message": "Card updated"})
+
+
+@app.route("/cards/<int:card_id>", methods=["DELETE"])
+def delete_card(card_id):
+    card = Card.query.get_or_404(card_id)
+    db.session.delete(card)
+    db.session.commit()
+    return jsonify({"message": "Card deleted"})
+
+
+@app.route("/cards/<int:card_id>/review", methods=["POST"])
+def review_card(card_id):
+    card = Card.query.get_or_404(card_id)
+    data = request.json
+    difficulty = data["difficulty"]
+
+    if difficulty == "hard":
+        card.ease_factor = max(1.3, card.ease_factor - 0.2)
+        card.interval = 1
+    elif difficulty == "medium":
+        card.interval = round(card.interval * card.ease_factor)
+    elif difficulty == "easy":
+        card.ease_factor = card.ease_factor + 0.15
+        card.interval = round(card.interval * card.ease_factor)
+
+    card.next_review = datetime.utcnow() + timedelta(days=card.interval)
+    db.session.commit()
+
+    return jsonify({
+        "message": "Card reviewed",
+        "new_interval": card.interval,
+        "new_ease_factor": round(card.ease_factor, 2),
+        "next_review": card.next_review.isoformat()
+    })
 
 
 if __name__ == "__main__":
