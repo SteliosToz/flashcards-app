@@ -116,7 +116,26 @@ def get_categories():
     categories = db.session.query(Card.category).distinct().all()
     result = [c[0] for c in categories]
     return jsonify(result)
+@app.route("/stats", methods=["GET"])
 
+def get_stats():
+    total_cards = Card.query.count()
+    now = datetime.utcnow()
+    due_today = Card.query.filter(Card.next_review <= now).count()
+    mastered = Card.query.filter(Card.interval >= 21).count()
+
+    all_cards = Card.query.all()
+    if all_cards:
+        avg_ease = sum(c.ease_factor for c in all_cards) / len(all_cards)
+    else:
+        avg_ease = 0
+
+    return jsonify({
+        "total_cards": total_cards,
+        "due_today": due_today,
+        "mastered": mastered,
+        "avg_ease_factor": round(avg_ease, 2)
+    })
 
 if __name__ == "__main__":
     app.run(debug=True)

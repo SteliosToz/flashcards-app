@@ -1,10 +1,21 @@
 let currentCard = null;
 
+async function loadStats() {
+    const response = await fetch("/stats");
+    const stats = await response.json();
+
+    document.getElementById("stat-total").textContent = stats.total_cards;
+    document.getElementById("stat-mastered").textContent = stats.mastered;
+    document.getElementById("stat-ease").textContent = stats.avg_ease_factor;
+}
+
 async function loadDueCard() {
     const response = await fetch("/cards/due");
     const cards = await response.json();
 
     document.getElementById("due-count").textContent = `${cards.length} κάρτες για σήμερα`;
+
+    
 
     if (cards.length === 0) {
         document.getElementById("card").classList.add("hidden");
@@ -77,3 +88,4 @@ document.getElementById("add-card-form").addEventListener("submit", async (event
 });
 
 loadDueCard();
+loadStats();
