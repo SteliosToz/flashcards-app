@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
 
@@ -21,7 +21,7 @@ class Card(db.Model):
 
 @app.route("/")
 def home():
-    return "Hello, Flashcards!"
+    return render_template("index.html")
 
 
 @app.route("/cards", methods=["POST"])

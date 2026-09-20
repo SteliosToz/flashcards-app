@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Flashcards</h1>
+        <p class="subtitle" id="due-count">Φόρτωση...</p>
+    </header>
+
+    <main>
+        <div class="card-container" id="card-container">
+            <div class="card" id="card">
+                <p class="card-category" id="card-category"></p>
+                <p class="card-text" id="card-question"></p>
+                <p class="card-text card-answer hidden" id="card-answer"></p>
+                <button class="btn-flip" id="flip-btn">Δείξε την απάντηση</button>
+            </div>
+        </div>
+
+        <div class="difficulty-buttons hidden" id="difficulty-buttons">
+            <button class="btn-hard" data-difficulty="hard">Δύσκολο</button>
+            <button class="btn-medium" data-difficulty="medium">Μέτριο</button>
+            <button class="btn-easy" data-difficulty="easy">Εύκολο</button>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
