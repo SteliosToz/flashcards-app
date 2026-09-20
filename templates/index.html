@@ -14,7 +14,8 @@
 
     <main>
         <div class="card-container" id="card-container">
-            <div class="card" id="card">
+                <p class="no-cards-message hidden" id="no-cards-message">Καμία κάρτα για σήμερα 🎉</p>
+        <div class="card" id="card">
                 <p class="card-category" id="card-category"></p>
                 <p class="card-text" id="card-question"></p>
                 <p class="card-text card-answer hidden" id="card-answer"></p>
@@ -27,7 +28,7 @@
             <button class="btn-medium" data-difficulty="medium">Μέτριο</button>
             <button class="btn-easy" data-difficulty="easy">Εύκολο</button>
         </div>
-        
+
         <div class="add-card-section">
             <button class="btn-toggle-form" id="toggle-form-btn">+ Νέα κάρτα</button>
             <form class="add-card-form hidden" id="add-card-form">
