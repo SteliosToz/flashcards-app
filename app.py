@@ -96,5 +96,27 @@ def review_card(card_id):
     })
 
 
+@app.route("/cards/due", methods=["GET"])
+def get_due_cards():
+    now = datetime.utcnow()
+    due_cards = Card.query.filter(Card.next_review <= now).all()
+    result = []
+    for card in due_cards:
+        result.append({
+            "id": card.id,
+            "question": card.question,
+            "answer": card.answer,
+            "category": card.category
+        })
+    return jsonify(result)
+
+
+@app.route("/categories", methods=["GET"])
+def get_categories():
+    categories = db.session.query(Card.category).distinct().all()
+    result = [c[0] for c in categories]
+    return jsonify(result)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
