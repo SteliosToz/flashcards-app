@@ -137,5 +137,13 @@ def get_stats():
         "avg_ease_factor": round(avg_ease, 2)
     })
 
+@app.route("/cards/next", methods=["GET"])
+def get_next_review():
+    now = datetime.utcnow()
+    next_card = Card.query.filter(Card.next_review > now).order_by(Card.next_review.asc()).first()
+    if next_card:
+        return jsonify({"next_review": next_card.next_review.isoformat()})
+    return jsonify({"next_review": None})
+
 if __name__ == "__main__":
     app.run(debug=True)

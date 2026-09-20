@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <h1>Flashcards</h1>
+        <h1><a href="/" class="home-link">Flashcards</a></h1>
         <p class="subtitle" id="due-count">Φόρτωση...</p>
 
         <div class="stats-grid" id="stats-grid">
@@ -29,12 +29,19 @@
 
     <main>
         <div class="card-container" id="card-container">
-                <p class="no-cards-message hidden" id="no-cards-message">Καμία κάρτα για σήμερα 🎉</p>
-        <div class="card" id="card">
-                <p class="card-category" id="card-category"></p>
-                <p class="card-text" id="card-question"></p>
-                <p class="card-text card-answer hidden" id="card-answer"></p>
-                <button class="btn-flip" id="flip-btn">Δείξε την απάντηση</button>
+           <div class="no-cards-message hidden" id="no-cards-message">
+                <p class="no-cards-title">Όλες οι κάρτες σου είναι ενημερωμένες! 🎉</p>
+                <p class="no-cards-subtitle" id="next-review-text">Έλεγχος επόμενης κάρτας...</p>
+            </div>
+            <div class="card" id="card">
+                <div class="card-face card-front">
+                    <p class="card-category" id="card-category"></p>
+                    <p class="card-text" id="card-question"></p>
+                    <button class="btn-flip" id="flip-btn">Δείξε την απάντηση</button>
+                </div>
+                <div class="card-face card-back">
+                    <p class="card-text" id="card-answer"></p>
+                </div>
             </div>
         </div>
 
@@ -52,6 +59,19 @@
                 <input type="text" id="new-category" placeholder="Κατηγορία (π.χ. English)" required>
                 <button type="submit" class="btn-submit">Προσθήκη</button>
             </form>
+        </div>
+        
+        <div class="manage-section">
+            <button class="btn-info-toggle" id="manage-toggle-btn">Διαχείριση καρτών ▾</button>
+            <div class="manage-list hidden" id="manage-list"></div>
+        </div>
+
+        <div class="info-section">
+            <button class="btn-info-toggle" id="info-toggle-btn">Πώς λειτουργεί; ▾</button>
+            <div class="info-panel hidden" id="info-panel">
+                <p><strong>Spaced repetition</strong> είναι μια τεχνική μελέτης όπου οι κάρτες που ξέρεις καλά εμφανίζονται σπανιότερα, ενώ αυτές που δυσκολεύεσαι εμφανίζονται πιο συχνά.</p>
+                <p>Κάθε φορά που απαντάς, επιλέγεις πόσο εύκολα το θυμήθηκες — αυτό καθορίζει πότε θα ξαναδείς την κάρτα.</p>
+            </div>
         </div>
     </main>
 
