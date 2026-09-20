@@ -9,7 +9,10 @@
 <body>
     <header>
         <h1><a href="/" class="home-link">Flashcards</a></h1>
-        <p class="subtitle" id="due-count">Φόρτωση...</p>
+         <p class="subtitle" id="due-count">Φόρτωση...</p>
+        <div class="progress-bar-container hidden" id="progress-bar-container">
+            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+        </div>
 
         <div class="stats-grid" id="stats-grid">
             <div class="stat-box">
@@ -60,7 +63,7 @@
                 <button type="submit" class="btn-submit">Προσθήκη</button>
             </form>
         </div>
-        
+
         <div class="manage-section">
             <button class="btn-info-toggle" id="manage-toggle-btn">Διαχείριση καρτών ▾</button>
             <div class="manage-list hidden" id="manage-list"></div>

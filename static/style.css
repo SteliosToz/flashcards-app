@@ -351,3 +351,20 @@ add-card-section {
     background-color: #f5e0e0;
     border-radius: 6px;
 }
+
+.progress-bar-container {
+    width: 200px;
+    height: 6px;
+    background-color: #e8e2d5;
+    border-radius: 3px;
+    margin: 10px auto 0;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #3d8a5a;
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.4s ease;
+}

@@ -1,4 +1,6 @@
+
 let currentCard = null;
+let initialDueCount = 0;
 
 async function loadStats() {
     const response = await fetch("/stats");
@@ -39,6 +41,13 @@ async function loadDueCard() {
     const cards = await response.json();
 
     document.getElementById("due-count").textContent = `${cards.length} κάρτες για σήμερα`;
+
+     if (initialDueCount > 0) {
+        const completed = initialDueCount - cards.length;
+        const percent = Math.round((completed / initialDueCount) * 100);
+        document.getElementById("progress-bar-container").classList.remove("hidden");
+        document.getElementById("progress-bar-fill").style.width = `${percent}%`;
+    }
 
     if (cards.length === 0) {
         document.getElementById("card").classList.add("hidden");
