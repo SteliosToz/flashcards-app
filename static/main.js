@@ -40,3 +40,27 @@ document.querySelectorAll(".difficulty-buttons button").forEach(button => {
 });
 
 loadDueCard();
+
+loadDueCard();
+
+document.getElementById("toggle-form-btn").addEventListener("click", () => {
+    document.getElementById("add-card-form").classList.toggle("hidden");
+});
+
+document.getElementById("add-card-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const question = document.getElementById("new-question").value;
+    const answer = document.getElementById("new-answer").value;
+    const category = document.getElementById("new-category").value;
+
+    await fetch("/cards", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question, answer, category })
+    });
+
+    document.getElementById("add-card-form").reset();
+    document.getElementById("add-card-form").classList.add("hidden");
+    loadDueCard();
+});

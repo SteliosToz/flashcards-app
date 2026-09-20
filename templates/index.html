@@ -27,6 +27,16 @@
             <button class="btn-medium" data-difficulty="medium">Μέτριο</button>
             <button class="btn-easy" data-difficulty="easy">Εύκολο</button>
         </div>
+        
+        <div class="add-card-section">
+            <button class="btn-toggle-form" id="toggle-form-btn">+ Νέα κάρτα</button>
+            <form class="add-card-form hidden" id="add-card-form">
+                <input type="text" id="new-question" placeholder="Ερώτηση" required>
+                <input type="text" id="new-answer" placeholder="Απάντηση" required>
+                <input type="text" id="new-category" placeholder="Κατηγορία (π.χ. English)" required>
+                <button type="submit" class="btn-submit">Προσθήκη</button>
+            </form>
+        </div>
     </main>
 
     <script src="{{ url_for('static', filename='main.js') }}"></script>

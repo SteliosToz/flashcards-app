@@ -113,3 +113,59 @@ header h1 {
     background-color: #e0f0e5;
     color: #3d8a5a;
 }
+add-card-section {
+    margin-top: 32px;
+    text-align: center;
+}
+
+.btn-toggle-form {
+    background: none;
+    border: 1px dashed #b0a996;
+    color: #8a8478;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-toggle-form:hover {
+    border-color: #8a8478;
+    color: #3a3630;
+}
+
+.add-card-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add-card-form input {
+    padding: 10px 14px;
+    border: 1px solid #ddd6c8;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+.add-card-form input:focus {
+    outline: none;
+    border-color: #3a3630;
+}
+
+.btn-submit {
+    background-color: #3a3630;
+    color: #faf7f0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #55504a;
+}
