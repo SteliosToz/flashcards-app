@@ -71,13 +71,13 @@ async function loadDueCard() {
     document.getElementById("difficulty-buttons").classList.add("hidden");
 
     const categoryColors = {
-        "English": "#faf7f0",
-        "JavaScript": "#f3ede6",
-        "Git": "#eef2ec",
-        "CSS": "#eef0f5",
-        "Python": "#f5eeee",
-        "Dev": "#eeeef5"
-    };
+    "English": "#faf3e0",
+    "JavaScript": "#f5e6d3",
+    "Git": "#e8f0e0",
+    "CSS": "#e0eaf0",
+    "Python": "#f0e0e5",
+    "Dev": "#ece0f0"
+};
     const cardColor = categoryColors[currentCard.category] || "#faf7f0";
     document.getElementById("card").style.backgroundColor = cardColor;
 }

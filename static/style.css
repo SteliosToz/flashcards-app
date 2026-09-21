@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #f5f1ea;
+    background-color: #feecc4;
     color: #3a3630;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     min-height: 100vh;
@@ -13,6 +13,18 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 40px 20px;
+    animation: breathe 6s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% { background-color: #f5e0bd; }
+    50% { background-color: #f5d194; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body {
+        animation: none;
+    }
 }
 
 header {
@@ -38,7 +50,7 @@ header h1 {
 }
 
 .card {
-    background-color: #faf7f0;
+    background-color: #feecc4;
     border-radius: 16px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     padding: 40px 32px;
@@ -63,7 +75,7 @@ header h1 {
 
 .card-answer {
     color: #6b6558;
-    border-top: 1px solid #e8e2d5;
+    border-top: 1px solid #feecc4;
     padding-top: 20px;
 }
 
@@ -73,7 +85,7 @@ header h1 {
 
 .btn-flip {
     background-color: #3a3630;
-    color: #faf7f0;
+    color: #feecc4;
     border: none;
     padding: 12px 28px;
     border-radius: 8px;
@@ -100,17 +112,17 @@ header h1 {
 }
 
 .btn-hard {
-    background-color: #f5e0e0;
+    background-color: #feecc4;
     color: #a04545;
 }
 
 .btn-medium {
-    background-color: #f5edd8;
+    background-color: #feecc4;
     color: #a3801f;
 }
 
 .btn-easy {
-    background-color: #e0f0e5;
+    background-color: #feecc4;
     color: #3d8a5a;
 }
 add-card-section {
@@ -148,7 +160,7 @@ add-card-section {
     border: 1px solid #ddd6c8;
     border-radius: 8px;
     font-size: 14px;
-    background-color: #fff;
+    background-color: #feecc4;
 }
 
 .add-card-form input:focus {
@@ -158,7 +170,7 @@ add-card-section {
 
 .btn-submit {
     background-color: #3a3630;
-    color: #faf7f0;
+    color: #feecc4;
     border: none;
     padding: 10px 20px;
     border-radius: 8px;
@@ -177,12 +189,14 @@ add-card-section {
 }
 
 .stat-box {
-    background-color: #faf7f0;
+    background-color: #feecc4;
+    border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 12px;
     padding: 16px 24px;
     text-align: center;
     min-width: 90px;
 }
+
 
 .stat-number {
     font-size: 24px;
@@ -200,7 +214,7 @@ add-card-section {
 }
 
 .card {
-    background-color: #faf7f0;
+    background-color: #feecc4;
     border-radius: 16px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     width: 100%;
@@ -277,7 +291,7 @@ add-card-section {
 }
 
 .info-panel {
-    background-color: #faf7f0;
+    background-color: #feecc4;
     border-radius: 12px;
     padding: 16px 20px;
     margin-top: 12px;
@@ -317,7 +331,7 @@ add-card-section {
     justify-content: space-between;
     align-items: center;
     padding: 10px 8px;
-    border-bottom: 1px solid #e8e2d5;
+    border-bottom: 1px solid #fdf3df;
     gap: 12px;
 }
 
@@ -348,14 +362,14 @@ add-card-section {
 }
 
 .btn-delete:hover {
-    background-color: #f5e0e0;
+    background-color: #feecc4;
     border-radius: 6px;
 }
 
 .progress-bar-container {
     width: 200px;
     height: 6px;
-    background-color: #e8e2d5;
+    background-color: #feecc4;
     border-radius: 3px;
     margin: 10px auto 0;
     overflow: hidden;
