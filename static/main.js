@@ -42,7 +42,11 @@ async function loadDueCard() {
 
     document.getElementById("due-count").textContent = `${cards.length} κάρτες για σήμερα`;
 
-     if (initialDueCount > 0) {
+    if (initialDueCount === 0 && cards.length > 0) {
+        initialDueCount = cards.length;
+    }
+
+    if (initialDueCount > 0)  {
         const completed = initialDueCount - cards.length;
         const percent = Math.round((completed / initialDueCount) * 100);
         document.getElementById("progress-bar-container").classList.remove("hidden");
