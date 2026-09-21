@@ -368,3 +368,21 @@ add-card-section {
     width: 0%;
     transition: width 0.4s ease;
 }
+
+.confetti-piece {
+    position: fixed;
+    top: -10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    z-index: 999;
+    animation: confetti-fall 1.4s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes confetti-fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}

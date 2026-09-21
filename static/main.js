@@ -95,6 +95,13 @@ document.querySelectorAll(".difficulty-buttons button").forEach(button => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ difficulty: difficulty })
         });
+
+        const checkResponse = await fetch("/cards/due");
+        const remainingCards = await checkResponse.json();
+        if (remainingCards.length === 0) {
+            celebrate();
+        }
+
         loadDueCard();
         loadStats();
         loadNextReview();
@@ -167,6 +174,19 @@ async function loadManageList() {
             loadNextReview();
         });
     });
+}
+
+function celebrate() {
+    const colors = ["#3d8a5a", "#a3801f", "#a04545", "#6b6558", "#8a8478"];
+    for (let i = 0; i < 30; i++) {
+        const piece = document.createElement("div");
+        piece.className = "confetti-piece";
+        piece.style.left = `${Math.random() * 100}vw`;
+        piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.animationDelay = `${Math.random() * 0.3}s`;
+        document.body.appendChild(piece);
+        setTimeout(() => piece.remove(), 1800);
+    }
 }
 
 document.getElementById("manage-toggle-btn").addEventListener("click", () => {
