@@ -145,6 +145,9 @@ def get_next_review():
         return jsonify({"next_review": next_card.next_review.isoformat()})
     return jsonify({"next_review": None})
 
+with app.app_context():
+    db.create_all()
+
 if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5000))
