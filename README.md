@@ -2,7 +2,7 @@
 
 A web application for studying with flashcards, using a spaced repetition algorithm inspired by Anki's SM-2 system. Built from scratch with Python/Flask backend and vanilla JavaScript frontend.
 
-**Live demo:** _(coming soon)_
+**Live demo:https://flashcards-app-8eph.onrender.com/
 
 ## What is spaced repetition?
 
